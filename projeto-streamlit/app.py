@@ -1,23 +1,18 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.pyplot as plt
 
 # Configuração da página
-st.set_page_config(page_title="Projetos com Notebooks + Py - Ciência de Dados", layout="wide")
+st.set_page_config(page_title="Projetos com Notebooks + Py Ciência de Dados", layout="wide")
 
-st.title("📘 Projeto: Visualização de Notebooks + Py - Ciência de Dados")
-st.markdown("---")
-
-tabs = st.tabs([
-    "📊 Limpeza de Dados",
-    "🧠 Funções Python",
-    "📂 Operações com Listas",
-    "📚 Introdução à Ciência de Dados"
-])
+# TABS principais
+tabs = st.tabs(["📊 Limpeza de Dados", "🧠 Funções Python", "📂 Operações com Listas", "🧠 Introdução à Ciência de Dados"])
 
 # --- Limpeza de Dados ---
 with tabs[0]:
+    st.title("📘 Projeto: Visualização de Notebooks")
+    st.markdown("---")
     st.subheader("📊 Limpeza e Preparação de Dados")
     st.markdown("Demonstrações de como importar, limpar e preparar dados em um dataset.")
 
@@ -39,12 +34,14 @@ with tabs[1]:
     st.markdown("Exemplos de criação e uso de funções, incluindo parâmetros padrão e retornos múltiplos.")
 
     with st.expander("🙋‍♀️ Saudação personalizada"):
-        st.code("""def saudacao(nome):
+        st.code("""
+def saudacao(nome):
     return f"Olá, {nome}!"
 """, language="python")
 
     with st.expander("📐 Função com parâmetro padrão"):
-        st.code("""def potencia(base, expoente=2):
+        st.code("""
+def potencia(base, expoente=2):
     return base ** expoente
 
 potencia(3)      # 3² = 9
@@ -52,7 +49,8 @@ potencia(3, 3)   # 3³ = 27
 """, language="python")
 
     with st.expander("🔁 Retorno múltiplo"):
-        st.code("""def operacoes(a, b):
+        st.code("""
+def operacoes(a, b):
     soma = a + b
     sub = a - b
     return soma, sub
@@ -62,7 +60,8 @@ print(f"Soma: {s}, Subtração: {sub}")
 """, language="python")
 
     with st.expander("💬 Repetição com argumentos nomeados"):
-        st.code("""def mensagem(texto, vezes=1):
+        st.code("""
+def mensagem(texto, vezes=1):
     for _ in range(vezes):
         print(texto)
 
@@ -75,24 +74,28 @@ with tabs[2]:
     st.markdown("Códigos para manipulação de listas e estruturas em Python.")
 
     with st.expander("➕ Soma e média"):
-        st.code("""lista = [1, 2, 3, 4, 5]
+        st.code("""
+lista = [1, 2, 3, 4, 5]
 soma = sum(lista)
 media = soma / len(lista)
 print(f"Soma: {soma}, Média: {media}")
 """, language="python")
 
     with st.expander("📐 Quadrados com list comprehension"):
-        st.code("""quadrados = [x**2 for x in lista]
+        st.code("""
+quadrados = [x**2 for x in lista]
 print("Quadrados:", quadrados)
 """, language="python")
 
     with st.expander("📍 Enumerando elementos"):
-        st.code("""for i, valor in enumerate(lista):
+        st.code("""
+for i, valor in enumerate(lista):
     print(f"Índice: {i}, Valor: {valor}")
 """, language="python")
 
     with st.expander("📏 Fatiamento e modificação"):
-        st.code("""print(lista[1:4])  # do segundo ao quarto elemento
+        st.code("""
+print(lista[1:4])  # do segundo ao quarto elemento
 
 lista.append(6)
 lista.remove(2)
@@ -103,7 +106,7 @@ print(lista)
 with tabs[3]:
     st.title("🧠 Py - Sua Porta de Entrada para a Ciência de Dados")
     st.subheader("Aprenda Ciência de Dados do zero com Python de forma prática!")
-
+    
     st.markdown("---")
     st.header("📌 O que é Ciência de Dados?")
     st.write("""
@@ -202,7 +205,6 @@ plt.show()
 '''
     st.code(code_4, language="python")
 
-    # Gráfico matplotlib no Streamlit
     fig, ax = plt.subplots()
     ax.bar(df['Nome'], df['Idade'], color='mediumseagreen')
     ax.set_title('Idade por Pessoa')
@@ -242,6 +244,7 @@ O método `describe()` retorna estatísticas úteis sobre um DataFrame, como mé
 df.describe()
 '''
     st.code(code_6, language="python")
+
     st.dataframe(df.describe())
 
     st.subheader("🔍 Quem é a pessoa mais velha?")
@@ -268,6 +271,7 @@ Vamos analisar as notas de alguns alunos e criar um gráfico de barras:
         "Aluno": ["João", "Maria", "Pedro", "Ana"],
         "Nota": [7.5, 9.0, 6.0, 8.5]
     }
+
     notas_df = pd.DataFrame(notas)
     st.dataframe(notas_df)
 
